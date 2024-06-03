@@ -9,9 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "auth-pattern": "url('/img/auth.png')",
+      },
+      colors: {
+        primary: "#3699C4",
+        secondary: "#262626",
+        third: "#18181B",
       },
     },
   },
