@@ -10,11 +10,14 @@ import { Input } from "../common/Input";
 import { Button } from "../common/Button";
 import { Spinner } from "@chakra-ui/react";
 import { GoogleButton } from "../common/GoogleButton";
+import useSession from "@/hooks/useSession";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const sessionManager = useSession();
 
   const { values, handleChange, handleBlur, handleSubmit, errors, touched } =
     useFormik({
@@ -24,6 +27,14 @@ export const Login = () => {
       },
       onSubmit: (values) => {
         setLoading(true);
+        sessionManager
+          .login({
+            email: values?.email,
+            password: values?.password,
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       },
       validationSchema: yup.object().shape({
         email: yup
@@ -37,8 +48,10 @@ export const Login = () => {
   return (
     <form className="p-6 bg-secondary rounded-xl flex flex-col w-2/3 gap-y-6">
       <div className="flex flex-col gap-y-4">
-        <h2 className="text-base font-bold">Sign in to your account</h2>
-        <p className="text-xs">
+        <h2 className="text-base font-bold text-white">
+          Sign in to your account
+        </h2>
+        <p className="text-xs text-white">
           Not a member? 
           <Link href={"/auth/register"} className="text-primary !font-semibold">
             Register
