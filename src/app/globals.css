@@ -26,6 +26,15 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+html {
+  background-color: #181818;
+}
+
+.chakra-checkbox__label {
+  color: #ccc;
+  font-size: 12px !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
