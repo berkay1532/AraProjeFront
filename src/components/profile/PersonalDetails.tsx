@@ -22,7 +22,6 @@ const PersonalDetails = () => {
       birthDate: new Date(),
     },
     onSubmit: (values) => {
-      console.log("girdi");
       toast({
         title: "Bilgileriniz Başarıyla Güncellendi",
         status: "success",

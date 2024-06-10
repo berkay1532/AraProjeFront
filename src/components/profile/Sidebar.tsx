@@ -1,6 +1,6 @@
 import React,{FC} from 'react'
 import Image from 'next/image'
-import Background from "@/assets/profile/bg.svg"
+import Background from "@/assets/profile/background.svg"
 import Exit from "@/assets/profile/exit.svg"
 import Desktop from "@/assets/profile/desktop.svg"
 import Personal from "@/assets/profile/personal.svg"
