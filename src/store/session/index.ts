@@ -27,28 +27,11 @@ const sessionSlice = createSlice({
         action.payload.user.token &&
         action.payload.user.role
       ) {
-        Cookies.set("auth", action.payload.user.token, {
-          domain: process.env.NEXT_PUBLIC_DOMAIN,
-          sameSite: "lax",
-          secure: true,
-          expires: 1000 * 60 * 60 * 24 * 10,
-        });
-        Cookies.set("role", action.payload.user.role, {
-          domain: process.env.NEXT_PUBLIC_DOMAIN,
-          sameSite: "lax",
-          secure: true,
-          expires: 1000 * 60 * 60 * 24 * 10,
-        });
+        Cookies.set("auth", action.payload.user.token);
+
         state = action.payload;
       }
-      if (action.payload.user?.studentNo) {
-        Cookies.set("studentNo", action.payload.user.studentNo, {
-          domain: process.env.NEXT_PUBLIC_DOMAIN,
-          sameSite: "lax",
-          secure: true,
-          expires: 1000 * 60 * 60 * 24 * 10,
-        });
-      }
+
       return state;
     },
     setSessionData(
@@ -62,26 +45,8 @@ const sessionSlice = createSlice({
     },
     resetSession(state) {
       state.user = null;
-      Cookies.remove("auth", {
-        domain: process.env.NEXT_PUBLIC_DOMAIN,
-        sameSite: "lax",
-        secure: true,
-        expires: 1000 * 60 * 60 * 24 * 10,
-      });
-      Cookies.remove("role", {
-        domain: process.env.NEXT_PUBLIC_DOMAIN,
-        sameSite: "lax",
-        secure: true,
-        expires: 1000 * 60 * 60 * 24 * 10,
-      });
-      if (Cookies.get("studentNo")) {
-        Cookies.remove("studentNo", {
-          domain: process.env.NEXT_PUBLIC_DOMAIN,
-          sameSite: "lax",
-          secure: true,
-          expires: 1000 * 60 * 60 * 24 * 10,
-        });
-      }
+      Cookies.remove("auth");
+
       return state;
     },
   },
