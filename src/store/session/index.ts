@@ -22,11 +22,7 @@ const sessionSlice = createSlice({
       return state;
     },
     setSession(state, action: PayloadAction<InitialState>) {
-      if (
-        action.payload.user &&
-        action.payload.user.token &&
-        action.payload.user.role
-      ) {
+      if (action.payload.user && action.payload.user.token) {
         Cookies.set("auth", action.payload.user.token, {
           domain: process.env.NEXT_PUBLIC_DOMAIN,
           sameSite: "lax",
