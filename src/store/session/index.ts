@@ -23,8 +23,6 @@ const sessionSlice = createSlice({
     },
     setSession(state, action: PayloadAction<InitialState>) {
       if (action.payload.user && action.payload.user.token) {
-        Cookies.set("auth", action.payload.user.token);
-
         state = action.payload;
       }
 
@@ -41,7 +39,6 @@ const sessionSlice = createSlice({
     },
     resetSession(state) {
       state.user = null;
-      Cookies.remove("auth");
 
       return state;
     },
