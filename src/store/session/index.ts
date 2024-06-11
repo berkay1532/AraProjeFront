@@ -27,7 +27,12 @@ const sessionSlice = createSlice({
         action.payload.user.token &&
         action.payload.user.role
       ) {
-        Cookies.set("auth", action.payload.user.token);
+        Cookies.set("auth", action.payload.user.token, {
+          domain: process.env.NEXT_PUBLIC_DOMAIN,
+          sameSite: "lax",
+          secure: true,
+          expires: 1000 * 60 * 60 * 24 * 10,
+        });
 
         state = action.payload;
       }
@@ -45,7 +50,12 @@ const sessionSlice = createSlice({
     },
     resetSession(state) {
       state.user = null;
-      Cookies.remove("auth");
+      Cookies.remove("auth", {
+        domain: process.env.NEXT_PUBLIC_DOMAIN,
+        sameSite: "lax",
+        secure: true,
+        expires: 1000 * 60 * 60 * 24 * 10,
+      });
 
       return state;
     },
