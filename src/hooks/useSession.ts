@@ -35,7 +35,14 @@ const useSession: SessionHook = () => {
           status: "success",
           duration: 1500,
         });
-
+        dispatch(
+          setSession({
+            user: {
+              token: data?.token,
+              ...data,
+            },
+          })
+        );
         router.push("/");
       } else if (status === 404) {
         toast({
@@ -77,7 +84,14 @@ const useSession: SessionHook = () => {
           status: "success",
           duration: 1500,
         });
-
+        dispatch(
+          setSession({
+            user: {
+              token: data?.token,
+              ...data,
+            },
+          })
+        );
         router.push("/");
       } else {
         toast({
