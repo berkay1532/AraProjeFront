@@ -15,7 +15,9 @@ const Topbar = () => {
 
   return (
     <div className="w-full container py-2.5 flex justify-between items-center mx-auto">
-      <Image src={Logo} alt="Logo" width={64} height={64} />
+      <Link href={"/"}>
+        <Image src={Logo} alt="Logo" width={64} height={64} />
+      </Link>
       <Input
         classNames={{
           wrapper: "!w-[400px]",
@@ -31,12 +33,14 @@ const Topbar = () => {
         }
       />
       <button>
-        {session ? (
+        {!!session?.user?.token ? (
           <Link href={"/profile"}>
             <Image src={Person} alt="Profile" width={64} height={64} />
           </Link>
         ) : (
-          <Link href={"/auth/login"}>Giriş Yap / Üye Ol</Link>
+          <Link href={"/auth/login"} className="text-white text-xl">
+            Giriş Yap / Üye Ol
+          </Link>
         )}
       </button>
     </div>

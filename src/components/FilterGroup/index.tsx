@@ -10,8 +10,9 @@ const FilterGroup = () => {
   const [filterState, setFilterState] = useState<FilterType>({
     city: "",
     country: "",
-    date: "all",
-    sector: "none",
+    workType: "remote",
+    date: "today",
+    sector: "other",
   });
 
   console.log(filterState);

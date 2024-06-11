@@ -3,7 +3,10 @@ import React, { useEffect, useRef } from "react";
 
 import Cookies from "js-cookie";
 import { ChakraProvider } from "@chakra-ui/react";
-import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material/styles";
+import {
+  ThemeProvider as MuiThemeProvider,
+  createTheme,
+} from "@mui/material/styles";
 import useSession from "@/hooks/useSession";
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
@@ -12,7 +15,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const muiTheme = createTheme({
     palette: {
       primary: {
-        main: '#fff',
+        main: "#fff",
       },
     },
   });
@@ -38,5 +41,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session.session]);
 
-  return <ChakraProvider>          <MuiThemeProvider theme={muiTheme}>{children}</MuiThemeProvider></ChakraProvider>;
+  return (
+    <MuiThemeProvider theme={muiTheme}>
+      <ChakraProvider>{children}</ChakraProvider>
+    </MuiThemeProvider>
+  );
 };

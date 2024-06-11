@@ -1,8 +1,8 @@
-import React from 'react';
-import { Input } from '../common/Input';
-import { useFormik } from 'formik';
-import { TextareaField } from '../common/TextArea';
-import { SelectInput } from '../common/Select';
+import React from "react";
+import { Input } from "../common/Input";
+import { useFormik } from "formik";
+import { TextareaField } from "../common/TextArea";
+import { SelectInput } from "../common/Select";
 import { useToast } from "@chakra-ui/react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,7 +10,16 @@ import "react-datepicker/dist/react-datepicker.css";
 const PersonalDetails = () => {
   const toast = useToast();
 
-  const { values, handleChange, handleBlur, handleSubmit, setFieldValue, errors, touched, dirty } = useFormik({
+  const {
+    values,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    setFieldValue,
+    errors,
+    touched,
+    dirty,
+  } = useFormik({
     initialValues: {
       fullName: "Kerem Kaya",
       email: "kerem.kaya@std.yildiz.edu.tr",
@@ -32,9 +41,11 @@ const PersonalDetails = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className='col-span-2 border-b-[2px] border-[#23BDFF] border-opacity-50 font-medium text-xl mx-4 mt-4 w-36 flex justify-center items-center'>Kişi Bilgileri</div>
+      <div className="col-span-2 border-b-[2px] border-[#23BDFF] border-opacity-50 font-medium text-xl mx-4 mt-4 w-36 flex justify-center items-center">
+        Kişi Bilgileri
+      </div>
       <div className="grid grid-cols-2">
-        <div className='col-span-1 m-4 flex flex-col gap-y-4'>
+        <div className="col-span-1 m-4 flex flex-col gap-y-4">
           <Input
             type="text"
             name="fullName"
@@ -73,7 +84,7 @@ const PersonalDetails = () => {
             value={values.description}
             handleChange={handleChange}
             placeholder="Açıklama"
-            insidePlaceholder='Kendinle Alakalı Birşeyler Yaz'
+            insidePlaceholder="Kendinle Alakalı Birşeyler Yaz"
             classNames={{
               label: "!mb-4",
               textarea: "min-h-[100px] max-h-[250px] ",
@@ -82,7 +93,7 @@ const PersonalDetails = () => {
             maxLength={100}
           />
         </div>
-        <div className='col-span-1 m-4 flex flex-col gap-y-4'>
+        <div className="col-span-1 m-4 flex flex-col gap-y-4">
           <SelectInput
             name="position"
             value={values.position}
@@ -102,7 +113,8 @@ const PersonalDetails = () => {
             ]}
             classNames={{
               wrapper: "",
-              select: "px-4 py-3 bg-transparent rounded-2xl text-base focus:border-white hover:border-white font-normal leading-5 border-[1px] w-full border-solid text-white disabled:opacity-20",
+              select:
+                "px-4 py-3 bg-transparent rounded-2xl text-base focus:border-white hover:border-white font-normal leading-5 border-[1px] w-full border-solid text-white disabled:opacity-20",
               label: "text-sm font-normal text-white",
             }}
           />
@@ -117,8 +129,8 @@ const PersonalDetails = () => {
             placeholder="Telefon Numarası"
             insidePlaceholder="+90 5-- --- -- --"
           />
-          <div className='w-full flex gap-x-4'>
-            <div className='w-1/2'>
+          <div className="w-full flex gap-x-4">
+            <div className="w-1/2">
               <SelectInput
                 name="gender"
                 value={values.gender}
@@ -133,22 +145,25 @@ const PersonalDetails = () => {
                 ]}
                 classNames={{
                   wrapper: "",
-                  select: "px-4 py-3 bg-transparent rounded-2xl text-base focus:border-white hover:border-white font-normal leading-5 border-[1px] w-full border-solid text-white disabled:opacity-20",
+                  select:
+                    "px-4 py-3 bg-transparent rounded-2xl text-base focus:border-white hover:border-white font-normal leading-5 border-[1px] w-full border-solid text-white disabled:opacity-20",
                   label: "text-sm font-normal text-white",
                 }}
               />
             </div>
-            <div className='w-1/2'>
-              <label className="text-sm font-normal text-white">Doğum Tarihi</label>
+            <div className="w-1/2">
+              <label className="text-sm font-normal text-white">
+                Doğum Tarihi
+              </label>
               <div className="relative">
                 <DatePicker
                   selected={values.birthDate}
-                  onChange={(date) => setFieldValue("birthDate", date)}
+                  onChange={(date: any) => setFieldValue("birthDate", date)}
                   onBlur={handleBlur}
                   dateFormat="dd.MM.yyyy"
                   className="px-4 py-3 mt-1 bg-transparent rounded-2xl text-base focus:border-white hover:border-white font-normal leading-5 border-[1px] w-full border-solid text-white disabled:opacity-20"
                 />
-                <div className="absolute top-0 right-0 p-3">
+                <div className="absolute top-[0.3rem] right-0 p-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -157,19 +172,29 @@ const PersonalDetails = () => {
                     stroke="currentColor"
                     className="w-6 h-6 text-white"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7H4v10h16V7h-4M8 3h8m0 0V1m0 2v2m0 0h-8m8 0V1m0 2V3m0 2H8m0 0V1m0 2V3" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8 7H4v10h16V7h-4M8 3h8m0 0V1m0 2v2m0 0h-8m8 0V1m0 2V3m0 2H8m0 0V1m0 2V3"
+                    />
                   </svg>
                 </div>
               </div>
             </div>
           </div>
-          <div className='flex justify-center items-start w-full h-full mt-10'>
-            <button type="submit" className='bg-[#23BDFF] rounded-2xl text-white font-medium text-base py-2 px-5 disabled:opacity-40 ' disabled={!dirty}>Kaydet</button>
+          <div className="flex justify-end items-start w-full h-full mt-10">
+            <button
+              type="submit"
+              className="bg-[#23BDFF] rounded-2xl text-white font-medium text-base py-2 px-5 disabled:opacity-40 "
+              disabled={!dirty}
+            >
+              Kaydet
+            </button>
           </div>
         </div>
       </div>
     </form>
   );
-}
+};
 
 export default PersonalDetails;

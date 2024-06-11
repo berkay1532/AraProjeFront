@@ -5,6 +5,7 @@ export interface JobType {
   position: string;
   location: string;
   type: string;
+  website: string;
 }
 
 export interface AllJobsType {
